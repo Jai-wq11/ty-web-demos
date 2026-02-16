@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Business Deserves to Be Found Online | Web Design & AI Automation HK</title>
+    <meta name="description" content="Professional websites and AI automation for Hong Kong businesses. Stop losing customers to competitors. Get found online.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --bg-hover: #242424;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --success: #10b981;
+            --border: #2a2a2a;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--accent);
+            opacity: 0.05;
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.05; }
+            50% { transform: scale(1.1); opacity: 0.08; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 72px);
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: clamp(18px, 2vw, 24px);
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-primary {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 18px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+        }
+        
+        .cta-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Problem Section */
+        .problem {
+            background: var(--bg-card);
+            text-align: center;
+        }
+        
+        .problem h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            margin-bottom: 24px;
+        }
+        
+        .problem p {
+            font-size: clamp(18px, 2vw, 22px);
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 32px;
+        }
+        
+        .stat {
+            display: inline-block;
+            background: var(--bg-hover);
+            padding: 24px 48px;
+            border-radius: 12px;
+            margin: 16px;
+            border: 1px solid var(--border);
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        
+        /* What You Get Section */
+        .what-you-get {
+            background: var(--bg-dark);
+        }
+        
+        .what-you-get h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+        
+        .comparison-card {
+            background: var(--bg-card);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+        
+        .card-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        
+        .card-title {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        
+        .card-list {
+            list-style: none;
+            color: var(--text-secondary);
+        }
+        
+        .card-list li {
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+        }
+        
+        .card-list li::before {
+            content: '×';
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+            font-size: 20px;
+        }
+        
+        .comparison-card.after .card-list li::before {
+            content: '✓';
+            color: var(--success);
+        }
+        
+        /* Demo Section */
+        .demo {
+            background: var(--bg-card);
+            text-align: center;
+        }
+        
+        .demo h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            margin-bottom: 24px;
+        }
+        
+        .demo-subtitle {
+            font-size: clamp(18px, 2vw, 22px);
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .demo-card {
+            background: var(--bg-hover);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .demo-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .demo-preview {
+            height: 200px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        
+        .demo-info {
+            padding: 24px;
+            text-align: left;
+        }
+        
+        .demo-title {
+            font-size: 22px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .demo-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            background: var(--bg-dark);
+        }
+        
+        .how-it-works h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 48px;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 auto 24px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .step h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            background: var(--bg-card);
+        }
+        
+        .social-proof h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .testimonial {
+            background: var(--bg-hover);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        
+        .testimonial-text {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .testimonial-role {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        /* Pricing */
+        .pricing {
+            background: var(--bg-dark);
+        }
+        
+        .pricing h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .pricing-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 18px;
+            margin-bottom: 64px;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .pricing-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--accent);
+            position: relative;
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .pricing-name {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .pricing-period {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+        
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-cta {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-cta:hover {
+            background: var(--accent-hover);
+        }
+        
+        /* About */
+        .about {
+            background: var(--bg-card);
+            text-align: center;
+        }
+        
+        .about h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            margin-bottom: 32px;
+        }
+        
+        .about p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* FAQ */
+        .faq {
+            background: var(--bg-dark);
+        }
+        
+        .faq h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: var(--bg-card);
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+        
+        .faq-question {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        
+        .faq-answer {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            text-align: center;
+            padding: 120px 0;
+        }
+        
+        .final-cta h2 {
+            font-size: clamp(32px, 4vw, 56px);
+            margin-bottom: 24px;
+        }
+        
+        .final-cta p {
+            font-size: 20px;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+        
+        .urgency {
+            color: #fbbf24;
+            font-weight: 600;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-secondary {
+            display: inline-block;
+            background: white;
+            color: var(--accent);
+            padding: 18px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 32px;
+            right: 32px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            padding: 32px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                min-height: 80vh;
+            }
+            
+            .stat {
+                margin: 8px;
+                padding: 16px 24px;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+            
+            .steps {
+                gap: 32px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .cta-primary,
+            .cta-secondary {
+                width: 100%;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Business Deserves to Be Found Online</h1>
+                <p>Every day, customers search for businesses like yours in Hong Kong. They're ready to buy. But if they find your competitors first, you've already lost.</p>
+                <a href="#demo" class="cta-primary">See What Your Website Could Look Like</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <h2>The Problem</h2>
+            <p>Every day, potential customers search for your service in Hong Kong. They're looking for exactly what you offer. But they find your competitors instead.</p>
+            <div style="margin-top: 48px;">
+                <div class="stat">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">of customers search online before buying</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">75%</div>
+                    <div class="stat-label">never scroll past the first page</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">customers expect instant responses</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- What You Get Section -->
+    <section class="what-you-get">
+        <div class="container">
+            <h2>What Changes in Your Business</h2>
+            <div class="comparison">
+                <div class="comparison-card before">
+                    <div class="card-label">Before</div>
+                    <h3 class="card-title">The Old Way</h3>
+                    <ul class="card-list">
+                        <li>No website, just Instagram</li>
+                        <li>Potential customers can't find you on Google</li>
+                        <li>Answering the same questions manually</li>
+                        <li>Missing bookings while you sleep</li>
+                        <li>Competitors winning customers by default</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-card after">
+                    <div class="card-label">After</div>
+                    <h3 class="card-title">With Your New System</h3>
+                    <ul class="card-list">
+                        <li>Professional website ranking on Google</li>
+                        <li>Customers find YOU first, not competitors</li>
+                        <li>AI handles FAQs and bookings 24/7</li>
+                        <li>More bookings, less manual work</li>
+                        <li>You focus on your business, not admin</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Demo Section -->
+    <section class="demo" id="demo">
+        <div class="container">
+            <h2>See What I Can Build for You</h2>
+            <p class="demo-subtitle">Here's what I built in just a few days. Imagine what I can build for YOUR business.</p>
+            
+            <div class="demo-grid">
+                <a href="https://jai-wq11.github.io/ty-web-demos/" target="_blank" class="demo-card">
+                    <div class="demo-preview">🍽️</div>
+                    <div class="demo-info">
+                        <h3 class="demo-title">Restaurant Demo</h3>
+                        <p class="demo-desc">Modern, mobile-friendly restaurant website with menu, location, and online ordering.</p>
+                    </div>
+                </a>
+                
+                <a href="https://jai-wq11.github.io/ty-web-demos/trainer.html" target="_blank" class="demo-card">
+                    <div class="demo-preview">💪</div>
+                    <div class="demo-info">
+                        <h3 class="demo-title">Personal Trainer Demo</h3>
+                        <p class="demo-desc">Clean fitness website with booking system, testimonials, and service showcase.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>We Chat About Your Business</h3>
+                    <p>15-minute call. Tell me what you do, who your customers are, and what you want to achieve.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>I Build Your System</h3>
+                    <p>5-7 days. I create your custom website and set up AI automation that works for your business.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>You Go Live</h3>
+                    <p>Launch day. Your website goes live, customers start finding you, and you start getting more bookings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <h2>Real Results from Real Businesses</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p class="testimonial-text">"After getting our website, we saw 40% more bookings in the first month. The AI automation saves us hours every week."</p>
+                    <div class="testimonial-author">Local Cafe in TST</div>
+                    <div class="testimonial-role">Hong Kong</div>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"I was spending 10+ hours per week answering the same questions. Now the AI handles it all, and I can focus on training clients."</p>
+                    <div class="testimonial-author">Personal Trainer</div>
+                    <div class="testimonial-role">Central, Hong Kong</div>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"We finally show up on Google. Before, we were invisible online. Now customers find us every day."</p>
+                    <div class="testimonial-author">Fitness Studio Owner</div>
+                    <div class="testimonial-role">Causeway Bay</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="container">
+            <h2>Simple, Honest Pricing</h2>
+            <p class="pricing-subtitle">Most agencies charge $30,000-$50,000 for this. I don't.</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 class="pricing-name">Starter</h3>
+                    <div class="pricing-price">$8,000</div>
+                    <div class="pricing-period">One-time payment</div>
+                    <ul class="pricing-features">
+                        <li>Professional 5-page website</li>
+                        <li>Mobile-friendly design</li>
+                        <li>Google Maps integration</li>
+                        <li>Contact form</li>
+                        <li>Basic SEO setup</li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Get Started</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <h3 class="pricing-name">Professional</h3>
+                    <div class="pricing-price">$15,000</div>
+                    <div class="pricing-period">One-time payment</div>
+                    <ul class="pricing-features">
+                        <li>Everything in Starter, plus:</li>
+                        <li>AI automation (24/7 auto-replies)</li>
+                        <li>Booking management system</li>
+                        <li>Automated follow-ups</li>
+                        <li>WhatsApp integration</li>
+                        <li>Advanced SEO</li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Get Started</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3 class="pricing-name">Premium</h3>
+                    <div class="pricing-price">$25,000</div>
+                    <div class="pricing-period">One-time + support</div>
+                    <ul class="pricing-features">
+                        <li>Everything in Professional, plus:</li>
+                        <li>Ongoing support & updates</li>
+                        <li>Social media automation</li>
+                        <li>Monthly performance reports</li>
+                        <li>Priority support</li>
+                        <li>Unlimited revisions</li>
+                    </ul>
+                    <a href="#contact" class="pricing-cta">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>I'm Ty, 16, based in Hong Kong. I build websites and set up AI automation for local businesses. I'm not an agency — I'm one person who actually cares about your results. No corporate nonsense, no outsourcing, just real work that gets you real customers.</p>
+        </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2>Common Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">How long does it take?</div>
+                    <div class="faq-answer">5-7 days from our initial chat to launch. Fast enough to get you results quickly, thorough enough to do it right.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is it safe? Who owns my data?</div>
+                    <div class="faq-answer">You do. Your data stays on your device and servers you control. I don't own anything — you get full access and ownership of everything I build.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What if I don't like it?</div>
+                    <div class="faq-answer">Unlimited revisions until you're happy. I don't consider the job done until you're thrilled with the result.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">I already have Instagram. Why do I need a website?</div>
+                    <div class="faq-answer">Instagram is great for existing customers. But when someone searches "personal trainer Hong Kong" on Google, they won't find your Instagram — they'll find your competitors' websites. A website gets you found by new customers who don't know you exist yet.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Do I need to know tech stuff?</div>
+                    <div class="faq-answer">Nope. I handle everything. You focus on running your business, I handle the tech.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Final CTA -->
+    <section class="final-cta" id="contact">
+        <div class="container">
+            <h2>Stop Losing Customers to Your Competitors</h2>
+            <p>Get found online. Get more bookings. Grow your business.</p>
+            <p class="urgency">I only take 3 new clients per month</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/85212345678?text=Hi%20Ty,%20I'm%20interested%20in%20getting%20a%20website%20for%20my%20business" class="cta-primary">Message Me on WhatsApp</a>
+                <a href="mailto:ty@example.com" class="cta-secondary">Send an Email</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ty Web Design & AI Automation | Hong Kong</p>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/85212345678?text=Hi%20Ty,%20I'd%20like%20to%20learn%20more%20about%20your%20services" class="whatsapp-float" target="_blank">
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.828.737 5.605 2.139 8.059L.053 31.496l7.656-2.008A15.924 15.924 0 0 0 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm8.129 22.668c-.349.981-1.731 1.797-2.833 2.031-.751.161-1.731.288-5.031-.875-4.229-1.491-6.953-5.795-7.165-6.059-.203-.264-1.731-2.304-1.731-4.395 0-2.091 1.096-3.115 1.485-3.541.389-.427.848-.533 1.131-.533.283 0 .565.005.811.016.26.011.608-.099.952.725.349.835 1.189 2.901 1.293 3.112.104.211.175.459.035.723-.139.267-.208.432-.416.667-.208.235-.437.523-.624.704-.208.203-.427.427-.184.835.243.405 1.08 1.781 2.317 2.885 1.595 1.427 2.933 1.872 3.349 2.083.416.211.661.176.904-.107.243-.283.997-1.163 1.261-1.563.264-.4.533-.333.896-.2.363.133 2.304 1.088 2.699 1.285.395.197.661.293.757.459.099.165.099.955-.251 1.936z" fill="currentColor"/>
+        </svg>
+    </a>
+    
+</body>
+</html>
