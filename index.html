@@ -9,10 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
         body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#e5e5e5;line-height:1.6}
         .container{max-width:1200px;margin:0 auto;padding:0 20px}
         
-        header{background:rgba(10,10,10,0.97);padding:20px 0;position:fixed;width:100%;top:0;z-index:1000;border-bottom:1px solid #1a1a1a;backdrop-filter:blur(10px)}
+        header{background:rgba(10,10,10,0.97);padding:20px 0;position:fixed;width:100%;top:0;z-index:1000;border-bottom:1px solid#1a1a1a;backdrop-filter:blur(10px)}
         nav{display:flex;justify-content:space-between;align-items:center}
         .logo{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#d4af37;letter-spacing:2px}
         .nav-links{display:flex;gap:30px;list-style:none}
@@ -21,39 +22,64 @@
         .hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px}
         .hamburger span{width:25px;height:2px;background:#d4af37}
         
-        .hero{height:100vh;background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&h=900&fit=crop') center/cover;display:flex;align-items:center;justify-content:center;text-align:center}
-        .hero-content h1{font-family:'Playfair Display',serif;font-size:72px;font-weight:700;margin-bottom:15px;color:#fff}
-        .hero-content .tagline{font-size:18px;margin-bottom:10px;color:#d4af37;letter-spacing:4px;font-weight:300;text-transform:uppercase}
-        .hero-content .sub{color:#bbb;font-size:16px;margin-bottom:40px}
-        .hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+        .hero{height:100vh;background:linear-gradient(to bottom,rgba(10,10,10,0.3),rgba(10,10,10,0.7)),linear-gradient(135deg,#1a1a2e,#16213e),url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&h=900&fit=crop') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;background-blend-mode:overlay,normal,normal}
+        .hero-content h1{font-family:'Playfair Display',serif;font-size:72px;font-weight:700;margin-bottom:15px;color:#fff;animation:fadeInUp 0.8s ease-out}
+        .hero-content .tagline{font-size:18px;margin-bottom:10px;color:#d4af37;letter-spacing:4px;font-weight:300;text-transform:uppercase;animation:fadeInUp 0.8s ease-out 0.2s both}
+        .hero-content .sub{color:#bbb;font-size:16px;margin-bottom:40px;animation:fadeInUp 0.8s ease-out 0.4s both}
+        .hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeInUp 0.8s ease-out 0.6s both}
         .cta-button{display:inline-block;padding:18px 45px;background:#d4af37;color:#0a0a0a;text-decoration:none;font-weight:600;font-size:15px;letter-spacing:2px;transition:all .3s;border:2px solid #d4af37}
-        .cta-button:hover{background:transparent;color:#d4af37}
+        .cta-button:hover{background:transparent;color:#d4af37;transform:translateY(-2px)}
         .cta-outline{background:transparent;color:#fff;border-color:#fff}
         .cta-outline:hover{background:#fff;color:#0a0a0a}
 
-        .stats{padding:60px 0;background:#0f0f0f;border-bottom:1px solid #1a1a1a}
+        .stats{padding:60px 0;background:#0f0f0f;border-bottom:1px solid#1a1a1a}
         .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
         .stat-num{font-family:'Playfair Display',serif;font-size:42px;color:#d4af37;font-weight:700}
         .stat-label{color:#888;font-size:14px;letter-spacing:1px;margin-top:5px}
 
-        .menu{padding:100px 0;background:#0a0a0a}
+        .why-choose{padding:100px 0;background:#0a0a0a}
+        .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:50px;margin-top:60px}
+        .why-item{text-align:center;padding:40px 20px;background:#111;border-radius:8px;border:1px solid #1a1a1a;transition:all .3s}
+        .why-item:hover{border-color:#d4af37;transform:translateY(-5px)}
+        .why-icon{font-size:64px;margin-bottom:20px;display:block}
+        .why-item h3{font-family:'Playfair Display',serif;color:#d4af37;font-size:24px;margin-bottom:12px}
+        .why-item p{color:#aaa;line-height:1.7;font-size:15px}
+
+        .menu{padding:100px 0;background:#0f0f0f}
         .section-title{font-family:'Playfair Display',serif;font-size:48px;text-align:center;margin-bottom:15px;color:#d4af37}
         .section-subtitle{text-align:center;color:#888;margin-bottom:60px;font-size:17px}
         .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px}
-        .menu-item{background:#111;padding:30px;border:1px solid #1a1a1a;transition:all .3s;border-radius:4px;position:relative;overflow:hidden}
+        .menu-item{background:#111;padding:30px;border:1px solid#1a1a1a;transition:all .3s;border-radius:4px;position:relative;overflow:hidden;opacity:0;transform:translateY(30px);animation:fadeInUp 0.6s ease-out forwards}
+        .menu-item:nth-child(1){animation-delay:0.1s}
+        .menu-item:nth-child(2){animation-delay:0.2s}
+        .menu-item:nth-child(3){animation-delay:0.3s}
+        .menu-item:nth-child(4){animation-delay:0.4s}
+        .menu-item:nth-child(5){animation-delay:0.5s}
+        .menu-item:nth-child(6){animation-delay:0.6s}
         .menu-item:hover{border-color:#d4af37;transform:translateY(-4px);box-shadow:0 8px 30px rgba(212,175,55,.1)}
         .menu-item h3{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:8px;color:#fff}
         .menu-item p{color:#888;margin-bottom:12px;font-size:14px;line-height:1.7}
         .menu-item .price{color:#d4af37;font-weight:600;font-size:20px;font-family:'Playfair Display',serif}
         .menu-item .badge{position:absolute;top:15px;right:15px;background:#d4af37;color:#0a0a0a;padding:4px 12px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
 
-        .reviews{padding:100px 0;background:#0f0f0f}
+        .reviews{padding:100px 0;background:#0a0a0a}
         .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:50px}
-        .review-card{background:#141414;padding:35px;border-left:3px solid #d4af37;border-radius:4px}
+        .review-card{background:#141414;padding:35px;border-left:3px solid #d4af37;border-radius:4px;transition:transform .3s}
+        .review-card:hover{transform:translateX(5px)}
         .review-stars{color:#d4af37;font-size:18px;margin-bottom:15px}
         .review-text{color:#aaa;font-size:15px;font-style:italic;line-height:1.8;margin-bottom:20px}
         .review-author{color:#fff;font-weight:600;font-size:14px}
         .review-source{color:#666;font-size:12px}
+
+        .reservation{padding:100px 0;background:#0f0f0f}
+        .reservation-form{max-width:600px;margin:50px auto 0;background:#141414;padding:50px;border-radius:8px;border:1px solid#1a1a1a}
+        .form-group{margin-bottom:25px}
+        .form-group label{display:block;color:#d4af37;margin-bottom:8px;font-weight:500;font-size:14px;letter-spacing:1px}
+        .form-group input,.form-group select,.form-group textarea{width:100%;padding:15px;background:#0a0a0a;border:1px solid#222;color:#e5e5e5;font-family:'Inter',sans-serif;font-size:15px;border-radius:4px;transition:border-color .3s}
+        .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#d4af37}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+        .submit-btn{width:100%;padding:18px;background:#d4af37;color:#0a0a0a;border:none;font-weight:600;font-size:16px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;border-radius:4px}
+        .submit-btn:hover{background:#b8941f;transform:translateY(-2px)}
 
         .location{padding:100px 0;background:#0a0a0a}
         .location-content{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
@@ -61,38 +87,48 @@
         .info-block{margin-bottom:25px}
         .info-block h4{color:#fff;margin-bottom:8px;font-size:16px;display:flex;align-items:center;gap:8px}
         .info-block p{color:#888;line-height:1.8}
-        .map-frame{border-radius:8px;overflow:hidden;border:1px solid #1a1a1a}
+        .map-frame{border-radius:8px;overflow:hidden;border:1px solid#1a1a1a;height:450px}
+        .map-frame iframe{width:100%;height:100%;border:0}
         .whatsapp-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:#25D366;color:#fff;text-decoration:none;font-weight:600;font-size:15px;border-radius:8px;margin-top:20px;transition:opacity .3s}
-        .whatsapp-btn:hover{opacity:.85}
+        .whatsapp-btn:hover{opacity:.85;transform:translateY(-2px)}
 
         .instagram{padding:80px 0;background:#0f0f0f}
         .ig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:40px}
-        .ig-item{aspect-ratio:1;background-size:cover;background-position:center;position:relative;cursor:pointer}
-        .ig-item::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .3s}
-        .ig-item:hover::after{background:rgba(212,175,55,.2)}
+        .ig-item{aspect-ratio:1;background-size:cover;background-position:center;position:relative;cursor:pointer;overflow:hidden}
+        .ig-item::after{content:'📷';position:absolute;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;font-size:48px;opacity:0;transition:opacity .3s}
+        .ig-item:hover::after{opacity:1}
 
-        .ai-section{padding:80px 20px;background:linear-gradient(135deg,#0a0a0a,#1a1a2e);text-align:center}
-        .ai-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin-top:40px}
-        .ai-card{background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.15);border-radius:12px;padding:30px;transition:all .3s}
-        .ai-card:hover{border-color:rgba(212,175,55,.4);transform:translateY(-3px)}
-        .ai-card .icon{font-size:2em;margin-bottom:12px}
-        .ai-card h4{color:#d4af37;margin-bottom:8px;font-size:16px}
-        .ai-card p{color:#999;font-size:14px;line-height:1.6}
+        footer{background:#050505;padding:50px 0;border-top:1px solid#111}
+        .footer-content{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:40px}
+        .footer-about h3{font-family:'Playfair Display',serif;color:#d4af37;font-size:24px;margin-bottom:15px}
+        .footer-about p{color:#666;line-height:1.8;font-size:14px}
+        .footer-links h4{color:#888;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:15px}
+        .footer-links ul{list-style:none}
+        .footer-links li{margin-bottom:10px}
+        .footer-links a{color:#666;text-decoration:none;font-size:14px;transition:color .3s}
+        .footer-links a:hover{color:#d4af37}
+        .social-icons{display:flex;gap:15px;margin-top:20px}
+        .social-icons a{width:40px;height:40px;background:#1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#d4af37;font-size:20px;text-decoration:none;transition:all .3s}
+        .social-icons a:hover{background:#d4af37;color:#0a0a0a;transform:translateY(-3px)}
+        .footer-bottom{text-align:center;padding-top:30px;border-top:1px solid#111}
+        .footer-bottom p{color:#555;font-size:13px}
+        .footer-bottom a{color:#d4af37;text-decoration:none}
 
-        footer{background:#050505;padding:40px 0;text-align:center;border-top:1px solid #111}
-        footer p{color:#555;font-size:13px}
-        footer a{color:#d4af37;text-decoration:none}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
         @media(max-width:768px){
             .nav-links{display:none}
             .hamburger{display:flex}
             .hero-content h1{font-size:40px}
             .stats-grid{grid-template-columns:repeat(2,1fr);gap:30px}
+            .why-grid{grid-template-columns:1fr}
             .menu-grid{grid-template-columns:1fr}
             .location-content{grid-template-columns:1fr}
             .ig-grid{grid-template-columns:repeat(2,1fr)}
             .reviews-grid{grid-template-columns:1fr}
             .section-title{font-size:34px}
+            .form-row{grid-template-columns:1fr}
+            .footer-content{grid-template-columns:1fr}
         }
     </style>
 </head>
@@ -103,8 +139,10 @@
             <div class="hamburger"><span></span><span></span><span></span></div>
             <ul class="nav-links">
                 <li><a href="#home">HOME</a></li>
+                <li><a href="#why">WHY US</a></li>
                 <li><a href="#menu">MENU</a></li>
                 <li><a href="#reviews">REVIEWS</a></li>
+                <li><a href="#reserve">RESERVE</a></li>
                 <li><a href="#location">VISIT</a></li>
             </ul>
         </nav>
@@ -116,7 +154,7 @@
             <h1>Jade Garden</h1>
             <p class="sub">Authentic Cantonese cuisine crafted with 25 years of tradition</p>
             <div class="hero-buttons">
-                <a href="#location" class="cta-button">RESERVE A TABLE</a>
+                <a href="#reserve" class="cta-button">RESERVE A TABLE</a>
                 <a href="#menu" class="cta-button cta-outline">VIEW MENU</a>
             </div>
         </div>
@@ -129,6 +167,30 @@
                 <div><div class="stat-num">4.7★</div><div class="stat-label">GOOGLE RATING</div></div>
                 <div><div class="stat-num">2,400+</div><div class="stat-label">REVIEWS</div></div>
                 <div><div class="stat-num">50+</div><div class="stat-label">SIGNATURE DISHES</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose" id="why">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <p class="section-subtitle">What sets Jade Garden apart from the rest</p>
+            <div class="why-grid">
+                <div class="why-item">
+                    <span class="why-icon">🥬</span>
+                    <h3>Fresh Daily Ingredients</h3>
+                    <p>We source from local markets every morning. No frozen produce, no shortcuts. Only the freshest vegetables, seafood, and premium meats make it to your plate.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-icon">👨‍🍳</span>
+                    <h3>Award-Winning Chef</h3>
+                    <p>Our head chef trained in Guangzhou for 15 years and has won the Hong Kong Culinary Excellence Award three times. Authentic recipes, modern technique.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-icon">🏛️</span>
+                    <h3>Private Dining Rooms</h3>
+                    <p>Host business dinners or family celebrations in our elegant private rooms. Seats 8-20 guests with personalized service and custom menus available.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -202,6 +264,70 @@
         </div>
     </section>
 
+    <section class="reservation" id="reserve">
+        <div class="container">
+            <h2 class="section-title">Reserve Your Table</h2>
+            <p class="section-subtitle">Book now to secure your spot — walk-ins welcome subject to availability</p>
+            <form class="reservation-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="+852 1234 5678" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Time</label>
+                        <select required>
+                            <option value="">Select time</option>
+                            <option>11:30 AM</option>
+                            <option>12:00 PM</option>
+                            <option>12:30 PM</option>
+                            <option>1:00 PM</option>
+                            <option>1:30 PM</option>
+                            <option>6:00 PM</option>
+                            <option>6:30 PM</option>
+                            <option>7:00 PM</option>
+                            <option>7:30 PM</option>
+                            <option>8:00 PM</option>
+                            <option>8:30 PM</option>
+                            <option>9:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Number of Guests</label>
+                    <select required>
+                        <option value="">Select party size</option>
+                        <option>1-2 people</option>
+                        <option>3-4 people</option>
+                        <option>5-6 people</option>
+                        <option>7-8 people</option>
+                        <option>9-10 people</option>
+                        <option>10+ people (Private Room)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Special Requests (Optional)</label>
+                    <textarea rows="4" placeholder="Dietary restrictions, allergies, occasion, etc."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Confirm Reservation</button>
+            </form>
+        </div>
+    </section>
+
     <section class="location" id="location">
         <div class="container">
             <div class="location-content">
@@ -216,13 +342,13 @@
                         <p>Mon – Fri: 11:30 AM – 3:00 PM, 6:00 – 11:00 PM<br>Sat – Sun: 10:00 AM – 11:00 PM<br><em style="color:#d4af37">Weekend dim sum from 10 AM</em></p>
                     </div>
                     <div class="info-block">
-                        <h4>📞 Reservations</h4>
-                        <p>Phone: +852 2388 8888<br>Email: reserve@jadegardenhk.com</p>
+                        <h4>📞 Contact</h4>
+                        <p>Phone: +852 2388 8888<br>Email: reserve@jadegardenhk.com<br>WhatsApp: +852 9123 4567</p>
                     </div>
-                    <a href="https://wa.me/85223888888?text=Hi%2C%20I%27d%20like%20to%20make%20a%20reservation" class="whatsapp-btn">💬 Book via WhatsApp</a>
+                    <a href="https://wa.me/85291234567?text=Hi%2C%20I%27d%20like%20to%20make%20a%20reservation%20at%20Jade%20Garden" class="whatsapp-btn">💬 Book via WhatsApp</a>
                 </div>
                 <div class="map-frame">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.3!2d114.17!3d22.29!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDE3JzI0LjAiTiAxMTTCsDEwJzEyLjAiRQ!5e0!3m2!1sen!2shk!4v1" width="100%" height="400" style="border:0;filter:invert(90%)hue-rotate(180deg)" allowfullscreen loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.3267729778326!2d114.16980731495915!3d22.297850985340294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340400e9f8d4a5ad%3A0x38e1425fbaa8d75c!2sNathan%20Rd%2C%20Tsim%20Sha%20Tsui%2C%20Hong%20Kong!5e0!3m2!1sen!2s!4v1645123456789!5m2!1sen!2s" allowfullscreen loading="lazy"></iframe>
                 </div>
             </div>
         </div>
@@ -233,46 +359,48 @@
             <h2 class="section-title">@jadegardenhk</h2>
             <p class="section-subtitle">Follow us for daily specials and behind-the-kitchen moments</p>
             <div class="ig-grid">
-                <div class="ig-item" style="background:url('https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&h=400&fit=crop')"></div>
-                <div class="ig-item" style="background:url('https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=400&h=400&fit=crop')"></div>
-                <div class="ig-item" style="background:url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&h=400&fit=crop')"></div>
-                <div class="ig-item" style="background:url('https://images.unsplash.com/photo-1540648639573-8c848de23f0a?w=400&h=400&fit=crop')"></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ai-section">
-        <div class="container">
-            <h2 class="section-title" style="color:#fff">Smart Restaurant Tools</h2>
-            <p class="section-subtitle">AI-powered automation included with every website</p>
-            <div class="ai-grid">
-                <div class="ai-card">
-                    <div class="icon">💬</div>
-                    <h4>24/7 Auto-Reply</h4>
-                    <p>AI answers customer questions on Instagram, WhatsApp & email instantly — menu, hours, directions, dietary info.</p>
-                </div>
-                <div class="ai-card">
-                    <div class="icon">📅</div>
-                    <h4>Smart Reservations</h4>
-                    <p>Automated booking with confirmations, reminders, and waitlist management. No more missed calls.</p>
-                </div>
-                <div class="ai-card">
-                    <div class="icon">📱</div>
-                    <h4>Social Autopilot</h4>
-                    <p>Auto-schedule posts, generate captions from food photos, and keep your feed active without the effort.</p>
-                </div>
-                <div class="ai-card">
-                    <div class="icon">⭐</div>
-                    <h4>Review Manager</h4>
-                    <p>Get notified of new reviews instantly. AI drafts thoughtful replies — you just approve and post.</p>
-                </div>
+                <div class="ig-item" style="background:url('https://images.unsplash.com/photo-1563245372-f21724e3856d?w=500&h=500&fit=crop') center/cover"></div>
+                <div class="ig-item" style="background:url('https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&h=500&fit=crop') center/cover"></div>
+                <div class="ig-item" style="background:url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=500&h=500&fit=crop') center/cover"></div>
+                <div class="ig-item" style="background:url('https://images.unsplash.com/photo-1540648639573-8c848de23f0a?w=500&h=500&fit=crop') center/cover"></div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Jade Garden HK · <a href="#">Privacy</a> · Website by <a href="#">Ty Chen</a></p>
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Jade Garden</h3>
+                    <p>For 25 years, we've been serving authentic Cantonese cuisine in the heart of Tsim Sha Tsui. Every dish tells a story of tradition, quality, and passion.</p>
+                    <div class="social-icons">
+                        <a href="https://instagram.com/jadegardenhk">📷</a>
+                        <a href="https://facebook.com/jadegardenhk">👍</a>
+                        <a href="https://wa.me/85291234567">💬</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#reserve">Reservations</a></li>
+                        <li><a href="#location">Location</a></li>
+                        <li><a href="#">Private Events</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Allergy Information</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Jade Garden HK · All Rights Reserved · Website by <a href="#">Ty Chen</a></p>
+            </div>
         </div>
     </footer>
 </body>
