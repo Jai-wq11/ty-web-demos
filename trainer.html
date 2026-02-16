@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coach Mike HK | Personal Trainer & Fitness Coach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(13, 13, 13, 0.98);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #ff6b35;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #ff6b35;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&h=900&fit=crop') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 84px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+        
+        .hero-content .accent {
+            color: #ff6b35;
+        }
+        
+        .hero-content p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: #e0e0e0;
+            font-weight: 300;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background-color: #ff6b35;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 3px solid #ff6b35;
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: #ff6b35;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 120px 0;
+            background-color: #111;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .about-image {
+            background: linear-gradient(135deg, #ff6b35, #c54929);
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+        }
+        
+        .about-text h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 52px;
+            margin-bottom: 30px;
+            color: #ff6b35;
+            text-transform: uppercase;
+        }
+        
+        .about-text p {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .credentials {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .credential-item {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-left: 4px solid #ff6b35;
+        }
+        
+        .credential-item h4 {
+            color: #fff;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .credential-item p {
+            color: #888;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 120px 0;
+            background-color: #0d0d0d;
+        }
+        
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 56px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ff6b35;
+            text-transform: uppercase;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 80px;
+            font-size: 20px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .service-card {
+            background-color: #1a1a1a;
+            padding: 50px 30px;
+            text-align: center;
+            border: 2px solid #222;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            border-color: #ff6b35;
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 64px;
+            margin-bottom: 25px;
+        }
+        
+        .service-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        
+        .service-card p {
+            color: #999;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+        
+        .price {
+            color: #ff6b35;
+            font-weight: 700;
+            font-size: 32px;
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        .price-term {
+            color: #666;
+            font-size: 14px;
+            display: block;
+            margin-top: 5px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 120px 0;
+            background-color: #111;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .testimonial-card {
+            background-color: #1a1a1a;
+            padding: 40px;
+            border-left: 4px solid #ff6b35;
+        }
+        
+        .testimonial-text {
+            color: #b0b0b0;
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        .testimonial-role {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #ff6b35, #c54929);
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 56px;
+            margin-bottom: 30px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 50px;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .cta-button-white {
+            display: inline-block;
+            padding: 20px 50px;
+            background-color: #fff;
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 3px solid #fff;
+        }
+        
+        .cta-button-white:hover {
+            background-color: transparent;
+            color: #fff;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            color: #ff6b35;
+            font-size: 32px;
+            margin: 0 15px;
+            transition: opacity 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            opacity: 0.7;
+        }
+        
+        footer p {
+            color: #555;
+            font-size: 14px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 48px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .credentials {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 40px;
+            }
+            
+            .about-text h2 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">COACH MIKE</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Book Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>TRANSFORM<br>YOUR <span class="accent">BODY</span></h1>
+            <p>Hong Kong's Premier Personal Training Experience</p>
+            <a href="#contact" class="cta-button">Start Your Journey</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">💪</div>
+                <div class="about-text">
+                    <h2>Meet Coach Mike</h2>
+                    <p>With over 8 years of experience transforming bodies and lives across Hong Kong, I've helped hundreds of clients achieve their fitness goals — from weight loss to muscle building to athletic performance.</p>
+                    <p>My approach combines science-based training, personalized nutrition, and accountability that actually works. No cookie-cutter programs. No BS. Just real results.</p>
+                    
+                    <div class="credentials">
+                        <div class="credential-item">
+                            <h4>NASM Certified</h4>
+                            <p>Personal Trainer</p>
+                        </div>
+                        <div class="credential-item">
+                            <h4>Precision Nutrition</h4>
+                            <p>Level 1 Coach</p>
+                        </div>
+                        <div class="credential-item">
+                            <h4>8+ Years</h4>
+                            <p>Training Experience</p>
+                        </div>
+                        <div class="credential-item">
+                            <h4>300+ Clients</h4>
+                            <p>Transformed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Training Packages</h2>
+            <p class="section-subtitle">Invest in yourself. Choose your path.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔥</div>
+                    <h3>1-on-1 Training</h3>
+                    <p>Fully personalized sessions tailored to your goals. Maximum attention, maximum results.</p>
+                    <div class="price">$800<span class="price-term">per session</span></div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Partner Training</h3>
+                    <p>Train with a friend or partner. Split the cost, double the motivation.</p>
+                    <div class="price">$500<span class="price-term">per person/session</span></div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Online Coaching</h3>
+                    <p>Custom workout plans + nutrition guidance + weekly check-ins. Train anywhere.</p>
+                    <div class="price">$2,500<span class="price-term">per month</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Clients Say</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I've trained with a lot of coaches in HK, but Mike is different. He actually cares about your progress and pushes you to be better. Lost 15kg in 4 months and I've never felt stronger."</p>
+                    <div class="testimonial-author">Sarah L.</div>
+                    <div class="testimonial-role">Finance Professional</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Mike transformed not just my body, but my entire mindset around fitness. His programming is smart, his coaching is top-tier, and he's genuinely invested in helping you succeed."</p>
+                    <div class="testimonial-author">James T.</div>
+                    <div class="testimonial-role">Entrepreneur</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Best investment I've made in myself. Mike's online coaching kept me accountable even when traveling for work. Down 12kg and feeling amazing."</p>
+                    <div class="testimonial-author">Amanda W.</div>
+                    <div class="testimonial-role">Marketing Director</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"From day one, Mike understood my goals and created a plan that actually worked with my schedule. The results speak for themselves — stronger, leaner, more confident."</p>
+                    <div class="testimonial-author">Kevin C.</div>
+                    <div class="testimonial-role">Tech Consultant</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Ready to Level Up?</h2>
+            <p>Limited spots available. Book your free consultation today.</p>
+            <a href="https://instagram.com/coachmikehk" class="cta-button-white">Book Free Consult</a>
+        </div>
+    </section>
+
+    <!-- AI Automation Section -->
+    <section style="padding: 80px 20px; background: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 100%); text-align: center;">
+        <div class="container">
+            <h2 style="font-family: 'Oswald', sans-serif; font-size: 2.5em; color: #fff; margin-bottom: 10px;">🤖 AI-POWERED COACHING TOOLS</h2>
+            <p style="color: #aaa; font-size: 1.1em; margin-bottom: 40px;">Automate the boring stuff. Focus on what you do best — training.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                <div style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.2); border-radius: 12px; padding: 30px;">
+                    <div style="font-size: 2em; margin-bottom: 15px;">💬</div>
+                    <h4 style="color: #ff6b35; margin-bottom: 10px;">Auto-Reply to DMs</h4>
+                    <p style="color: #ccc; font-size: 0.9em;">AI handles inquiries on Instagram & WhatsApp — answers questions, shares pricing, books consultations. 24/7.</p>
+                </div>
+                <div style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.2); border-radius: 12px; padding: 30px;">
+                    <div style="font-size: 2em; margin-bottom: 15px;">📋</div>
+                    <h4 style="color: #ff6b35; margin-bottom: 10px;">Client Scheduling</h4>
+                    <p style="color: #ccc; font-size: 0.9em;">Automated session reminders, rescheduling, and follow-ups. No more chasing clients.</p>
+                </div>
+                <div style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.2); border-radius: 12px; padding: 30px;">
+                    <div style="font-size: 2em; margin-bottom: 15px;">🍽️</div>
+                    <h4 style="color: #ff6b35; margin-bottom: 10px;">AI Meal Plans</h4>
+                    <p style="color: #ccc; font-size: 0.9em;">Generate personalized meal plans for each client in seconds. Customized to their goals and dietary needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://instagram.com/coachmikehk">📷 Instagram</a>
+            </div>
+            <p>&copy; 2026 Coach Mike HK. All rights reserved. | Website by Ty</p>
+        </div>
+    </footer>
+</body>
+</html>
